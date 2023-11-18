@@ -1,8 +1,35 @@
-# React + Vite
+# Imvedla Frontend React + Tailwind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Imbedla (Plant Monitoring and Care)
 
-Currently, two official plugins are available:
+Imbedla is a web application (and app) to monitor houseplants and outdoor gardens, providing detailed information about the plant that the user has, including the current soil humidity, temperature, light intensity, among other important variables.
+The application will allow the users to distribute their houseplants and gardens by rooms, allowing a better and easy visualization of the information.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+GitHub URL:
+
+- [Frontend](https://github.com/AdrianAdame/imbedla-frontend-react)
+
+- [Backend](https://github.com/AdrianAdame/imbedla-backend-fiber)
+
+Tech Stack:
+
+- Golang (GoFiber Framework)
+- Reactjs (Vite Framework)
+- MongoDB
+- Tailwind (Material-Tailwind)
+
+
+Industry:
+- Technology
+- Plants
+- SmartHome
+
+
+Target Audience:
+- Anyone that has houseplants or gardens
+
+
+Similar projects:
+- Xiaomi Mi Flower Care Plant Sensor
+- Wanfei Plants monitor 
