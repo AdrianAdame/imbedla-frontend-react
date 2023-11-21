@@ -1,4 +1,4 @@
-# Imvedla Frontend React + Tailwind
+# Imbedla Frontend React + Tailwind
 
 Imbedla (Plant Monitoring and Care)
 
