@@ -19,9 +19,9 @@ const Login = () => {
         </section>
 
         <section className="flex items-center justify-center h-full w-1/2 lg-max:w-full">
-          <div className="flex flex-col justify-center items-center h-5/6  sm:w-5/6 md:w-1/2 lg:w-4/6 xl:w-1/2 gap-5 shadow-2xl p-10 lg-max:p-4  rounded-3xl ">
+          <div className="flex flex-col justify-center items-center h-5/6  sm:w-5/6 md:w-1/2 lg:w-4/6 xl:w-1/2 gap-5 shadow-2xl p-10 lg-max:p-4 rounded-3xl ">
             <div className=" lg:hidden  bg-blue-gray-500  w-5/6 lg:w-2/3 h-2/6 rounded-[20px] shadow-2xl"></div>
-            <h1 className=" text-lg ">Imbedia</h1>
+            <h1 className=" text-lg ">Imbedla</h1>
             <Input
               label="Email"
               type="email"
