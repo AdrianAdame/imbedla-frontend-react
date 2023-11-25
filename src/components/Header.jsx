@@ -88,7 +88,7 @@ const ProfileMenu = () => {
 
 const Header = () => {
     return (
-        <Navbar className="max-w-full rounded-full py-2 px-6" color="transparent">
+        <Navbar className="max-w-full rounded-full py-2 px-6 h-20" color="transparent">
             <div className="relative flex items-center justify-between text-blue-gray-900">
                 <Typography
                     as="a"
@@ -103,9 +103,9 @@ const Header = () => {
                     <Button className="rounded-full" color="green">Page</Button>
                     <Button className="rounded-full" color="green">Page</Button>
                 </div>
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center justify-between gap-4 w-fit">
                     <div className="hidden lg:flex p-2 bg-white lg:rounded-full items-center gap-2">
-                        <Input type="search" placeholder="Search" color="green" className="rounded-full"/>
+                        <Input type="search" size="md" placeholder="Search" color="green" className="rounded-full w-fit"/>
                         <IconButton 
                             size="md"
                             className="rounded-full"

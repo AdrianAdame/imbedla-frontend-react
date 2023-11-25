@@ -5,9 +5,9 @@ import Footer from "./Footer";
 
 const Layout = () => {
     return (
-        <div className="bg-[url('./assets/background-img.jpg')] bg-cover bg-no-repeat bg-center flex flex-col">
+        <div className="lg:w-full lg:h-full bg-[#EEEEEE] flex flex-col">
             <Header />
-            <div className="max-w-full py-4 px-4 h-screen">
+            <div className="max-w-full py-4 px-4 min-h-[calc(100vh-5rem)] flex-1">
                 <Outlet />
             </div>
             {/* <Footer /> */}
