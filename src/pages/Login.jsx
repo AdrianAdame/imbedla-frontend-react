@@ -15,7 +15,6 @@ const Login = () => {
         <section className=" flex justify-center items-center w-1/2 lg-max:hidden">
           <div className=" bg-blue-gray-500 w-full h-5/6 m-10  rounded-[20px] shadow-2xl"></div>
         </section>
-
         <section className="lg:flex lg:items-center lg:justify-center h-full w-1/2 lg-max:w-full">
           <div className="flex flex-col justify-center items-center h-full lg:h-5/6  sm:w-5/6 md:w-1/2 lg:w-4/6 xl:w-1/2 gap-5 shadow-2xl p-10 lg-max:p-4 rounded-3xl ">
             <div className=" lg:hidden  bg-blue-gray-500  w-5/6 lg:w-2/3 h-2/6 rounded-[20px] shadow-2xl"></div>
@@ -73,4 +72,4 @@ const Login = () => {
   );
 };
 
-export default Login
+export default Login;

@@ -23,6 +23,9 @@ const Home = lazy(() => import ('./pages/Home'))
 const Rooms = lazy(() => import ('./pages/Rooms'))
 const Room = lazy(() => import ('./pages/Room'))
 
+/** Pages Components */
+import Login from "./pages/Login";
+
 function App() {
   const isAuthenticated= Boolean(useSelector(selectCurrentToken))
   const mode = useSelector(selectCurrentThemeMode)
@@ -33,7 +36,6 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-
           {/** General Pages Routes */}
           
           {/** Authentication Route Pages */}
