@@ -22,22 +22,22 @@ const Home = () => {
                 </div>
                 <section className="grid gap-4 grid-cols-12 auto-rows-[10rem] py-4">
                     <div className="flex flex-col justify-between py-5 px-4 flex-[1_1_100%] col-span-12 row-span-1 lg:col-span-4 rounded-lg bg-white">
-                        xd
+                        test component
                     </div>
                     <div className="flex flex-col justify-between py-5 px-4 flex-[1_1_100%] col-span-12 row-span-1 lg:col-span-4 rounded-lg bg-white">
-                        xd 2
+                        test component 2
                     </div>
                     <div className="flex flex-col justify-between py-5 px-4 flex-[1_1_100%] col-span-12 row-span-1 lg:col-span-4 rounded-lg bg-white">
-                        xd 3
+                        test component 3
                     </div>
                     <div className="flex flex-col justify-between py-5 px-4 flex-[1_1_100%] col-span-12 row-span-1 lg:col-span-4 rounded-lg bg-white">
-                        xd 4
+                        test component 4
                     </div>
                     <div className="flex flex-col justify-between py-5 px-4 flex-[1_1_100%] col-span-12 row-span-1 lg:col-span-4 rounded-lg bg-white">
-                        xd 5
+                        test component 5
                     </div>
                     <div className="flex flex-col justify-between py-5 px-4 flex-[1_1_100%] col-span-12 row-span-1 lg:col-span-4 rounded-lg bg-white">
-                        xd 6
+                        test component 6
                     </div>
                 </section>
             </section>
@@ -52,10 +52,10 @@ const Home = () => {
                     <FontAwesomeIcon icon={faChevronDown} className="h-6 w-6" />
                 </div>
                 <div className="flex flex-col items-center">
-                    <div>Holi</div>
-                    <div>Holi</div>
-                    <div>Holi</div>
-                    <div>Holi</div>
+                    <div>Tip card component</div>
+                    <div>Tip card component</div>
+                    <div>Tip card component</div>
+                    <div>Tip card component</div>
                 </div>
             </aside>
         </main>

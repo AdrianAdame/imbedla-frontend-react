@@ -12,21 +12,21 @@ import {
 } from "@material-tailwind/react";
 import { createElement, useState } from "react";
 
-import { faBars, faChevronDown, faLanguage, faMoon, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faChevronDown, faCircleQuestion, faLanguage, faMoon, faRightFromBracket, faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const profileMenuItems = [
     {
         label: "My Profile",
-        icon: null,
+        icon: faUser,
     },
     {
         label: "Help",
-        icon: null,
+        icon: faCircleQuestion,
     },
     {
         label: "Sign Out",
-        icon: null,
+        icon: faRightFromBracket,
     },
 ];
 
@@ -50,6 +50,9 @@ const ProfileMenu = () => {
                         className="border border-gray-900 p-0.5"
                         src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
                     />
+                    <Typography variant="small" className="font-lexend-deca text-sm mr-1 ml-1 font-bold capitalize text-blue-gray-900 hidden lg:block">
+                        Adrian Adame
+                    </Typography>
                     <FontAwesomeIcon icon={faChevronDown} className="h-5 w-5 px-1"/>
                 </Button>
             </MenuHandler>
@@ -67,9 +70,7 @@ const ProfileMenu = () => {
                                     : ""
                             }`}
                         >
-                            {/* {createElement(icon, {
-                                className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`
-                            })} */}
+                            <FontAwesomeIcon icon={icon} className={`h-4 w-4 ${isLastItem ? "text-red-500" : ""}`} />
                             <Typography
                                 as="span"
                                 variant="small"
@@ -88,41 +89,15 @@ const ProfileMenu = () => {
 
 const Header = () => {
     return (
-        <Navbar className="max-w-full rounded-full py-2 px-6 h-20" color="transparent">
+        <Navbar className="max-w-full rounded-full py-4 lg:py-2 px-6 h-20" color="transparent">
             <div className="relative flex items-center justify-between text-blue-gray-900">
-                <Typography
-                    as="a"
-                    href="#"
-                    className="block lg:hidden mr-4 ml-2 cursor-pointer py-1.5 font-medium"
-                >
-                    Imbedla
-                </Typography>
                 <div className="hidden lg:flex p-2 bg-white lg:rounded-full gap-2">
                     <Button className="rounded-full" color="green">Dashboard</Button>
                     <Button className="rounded-full" color="green">Rooms</Button>
                     <Button className="rounded-full" color="green">Page</Button>
                     <Button className="rounded-full" color="green">Page</Button>
                 </div>
-                <div className="flex items-center justify-between gap-4 w-fit">
-                    <div className="hidden lg:flex p-2 bg-white lg:rounded-full items-center gap-2">
-                        <Input type="search" size="md" placeholder="Search" color="green" className="rounded-full w-fit"/>
-                        <IconButton 
-                            size="md"
-                            className="rounded-full"
-                            color="green"
-                        >
-                            <FontAwesomeIcon icon={faSearch} className="h-5 w-5"/>
-                        </IconButton>
-                    </div>
-                    <IconButton
-                        size="sm"
-                        color="blue-gray"
-                        variant="text"
-                        onClick={() => console.log("xd")}
-                        className="ml-auto mr-2 lg:hidden"
-                    >
-                        <FontAwesomeIcon icon={faBars} className="h-6 w-6 px-1"/>
-                    </IconButton>
+                <div className="flex items-center justify-between gap-8 w-fit">
                     <div className="hidden lg:flex p-2 bg-white rounded-full gap-4">
                         <IconButton 
                             size="md"
@@ -134,6 +109,7 @@ const Header = () => {
                         <IconButton 
                             size="md"
                             className="rounded-full"
+                            color="green"
                         >
                             <FontAwesomeIcon icon={faMoon} className="h-6 w-6 px-1"/>
                         </IconButton>
@@ -142,6 +118,15 @@ const Header = () => {
                         <ProfileMenu />
                     </div>
                 </div>
+                <IconButton
+                        size="lg"
+                        color="blue-gray"
+                        variant="text"
+                        onClick={() => console.log("xd")}
+                        className="ml-auto mr-2 lg:hidden"
+                    >
+                        <FontAwesomeIcon icon={faBars} className="h-8 w-8 px-1"/>
+                    </IconButton>
             </div>
         </Navbar>
     );
