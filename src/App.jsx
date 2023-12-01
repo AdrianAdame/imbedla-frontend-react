@@ -23,9 +23,6 @@ const Home = lazy(() => import ('./pages/Home'))
 const Rooms = lazy(() => import ('./pages/Rooms'))
 const Room = lazy(() => import ('./pages/Room'))
 
-/** Pages Components */
-import Login from "./pages/Login";
-
 function App() {
   const isAuthenticated= Boolean(useSelector(selectCurrentToken))
   const mode = useSelector(selectCurrentThemeMode)
@@ -50,7 +47,7 @@ function App() {
           />
 
           {/** Main Application Routes*/}
-          <Route element={<RequireAuth />}> {/* <Route element={<RequireAuth />}> */}
+          <Route element={null}> {/* <Route element={<RequireAuth />}> */}
             <Route element={<Layout />}>
               <Route 
                 path="/app" 
@@ -69,7 +66,7 @@ function App() {
                 }
               />
               <Route
-                path="app/room/:roomId"
+                path="app/:roomId"
                 element={
                   <React.Suspense falback={<Loader />}>
                     <Room />
@@ -77,7 +74,7 @@ function App() {
                 }
                 />
               <Route
-                path="app/room/:roomId/:plantId"
+                path="app/:roomId/:plantId"
                 element={
                   <React.Suspense falback={<Loader />}>
                     <Plant />
