@@ -15,11 +15,13 @@ export const userSlice = createSlice({
             state.mode = state.mode === "light" ? "dark" : "light";
         },
         setCredentials: (state, action) => {
-            const { user, userId, accessToken } = action.payload;
+            console.log(action.payload);
+
+            const { user, id, tokens } = action.payload;
 
             state.user = user;
-            state.userId = userId;
-            state.token = accessToken;
+            state.userId = id;
+            state.token = tokens.access;
         },
         setLogout: (state) => {
             state.user = null;

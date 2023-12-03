@@ -1,12 +1,12 @@
 import {createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import { setCredentials, setLogout } from "./userSlice"
 
-const BASE_URL = "http://127.0.0.1:3000"
+const BASE_URL = "http://192.168.1.116:3000/api";
 
 
 const baseQuery = fetchBaseQuery({
     baseUrl: BASE_URL + "/",
-    credentials: 'include',
+    credentials: 'same-origin', //credentials: 'same-origin'
     mode: 'cors',
     prepareHeaders: (headers, {getState}) => {
         const token = getState().user.token
@@ -15,6 +15,7 @@ const baseQuery = fetchBaseQuery({
             headers.set('Authorization', `Bearer ${token}`)
             headers.append('Content-Type', 'application/json')
             headers.append('Access-Control-Allow-Origin', '*')
+            headers.append('Access-Control-Allow-Headers', '*')
         }
 
         return headers
