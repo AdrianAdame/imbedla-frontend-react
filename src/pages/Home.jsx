@@ -1,7 +1,14 @@
+/** Material tailwind */
 import { IconButton, Typography } from "@material-tailwind/react";
+
+/** Icons */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+
+/** Hooks */
 import { useSelector } from "react-redux";
+
+/** Endpoints */
 import { selectCurrentThemeMode, selectCurrentUser } from "../features/userSlice";
 
 const Home = () => {

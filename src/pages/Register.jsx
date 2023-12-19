@@ -1,10 +1,17 @@
-import { useFormik } from "formik"
+/** Hooks */
 import { useNavigate } from "react-router"
 
+/** Forms */
+import { useFormik } from "formik"
 import * as Yup from "yup"
+
+/** Endpoints */
 import { useRegisterMutation } from "../features/slices/auth/authEndpoints"
+/** Icons */
 import { faArrowLeft, faEye, faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+/** Material Tailwind */
 import { Button, Input } from "@material-tailwind/react"
 
 const Register = () => {
@@ -49,7 +56,7 @@ const Register = () => {
 
     return (
         <section className="flex items-center justify-center h-full w-full">
-            <div className="flex flex-col justify-center items-center h-full lg:h-fit lg:gap-5 md:gap-8 gap-6 shadow-2xl p-10 lg:p-4 rounded-3xl">
+            <div className="flex flex-col justify-center items-center h-full lg:w-1/4 sm:w-full lg:h-fit lg:gap-5 md:gap-8 gap-6 shadow-2xl p-10 lg:p-4 rounded-3xl">
                 <h1 className=" text-lg font-lexend-exa">Sign Up</h1>
                     <Input
                         className=" bg-white"

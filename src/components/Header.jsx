@@ -46,6 +46,9 @@ const ProfileMenu = ({user}) => {
     const closeMenu = () => setIsMenuOpen(false);
 
     const handleLogout = async () => {
+
+        console.log("log out");
+
         try{
             const userData = await logoutApi().unwrap()
             dispatch(setLogout())

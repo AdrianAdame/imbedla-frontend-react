@@ -25,8 +25,8 @@ const Register = lazy(() => import("./pages/Register"));
 /** App Routes/Components */
 const Home = lazy(() => import("./pages/Home"));
 
-const Rooms = lazy(() => import("./pages/Rooms"));
-const Room = lazy(() => import("./pages/Room"));
+const Rooms = lazy(() => import("./pages/Rooms/Rooms"));
+const Room = lazy(() => import("./pages/Room/Room"));
 
 function App() {
     const isAuthenticated = Boolean(useSelector(selectCurrentToken));
