@@ -11,6 +11,7 @@ import {
     IconButton,
     MobileNav,
     Collapse,
+    Tooltip,
 } from "@material-tailwind/react";
 import { createElement, useEffect, useState } from "react";
 
@@ -219,26 +220,30 @@ const Header = ({ user }) => {
                 </div>
                 <div className="flex items-center justify-between gap-8 w-fit">
                     <div className="hidden lg:flex p-2 bg-white dark:bg-blue-gray-900 rounded-full gap-4">
-                        <IconButton 
-                            size="md"
-                            variant="text"
-                            className="rounded-full"
-                            color={currentMode === "dark" ?
-                                    "white" : null}
-                        >
-                            <FontAwesomeIcon icon={faLanguage} className="h-6 w-6 px-1"/>
-                        </IconButton>
-                        <IconButton 
-                            size="md"
-                            variant="text"
-                            className="rounded-full"
-                            onClick={() => dispatch(setMode())}
-                        >
-                            {currentMode === "dark" ? 
-                                (<FontAwesomeIcon icon={faSun} className="h-6 w-6 px-1" color="white"/>) : 
-                                (<FontAwesomeIcon icon={faMoon} className="h-6 w-6 px-1"/>)
-                            }
-                        </IconButton>
+                        <Tooltip content="Translation">
+                            <IconButton 
+                                size="md"
+                                variant="text"
+                                className="rounded-full"
+                                color={currentMode === "dark" ?
+                                        "white" : null}
+                            >
+                                <FontAwesomeIcon icon={faLanguage} className="h-6 w-6 px-1"/>
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip content="Current Mode">
+                            <IconButton 
+                                size="md"
+                                variant="text"
+                                className="rounded-full"
+                                onClick={() => dispatch(setMode())}
+                            >
+                                {currentMode === "dark" ? 
+                                    (<FontAwesomeIcon icon={faSun} className="h-6 w-6 px-1" color="white"/>) : 
+                                    (<FontAwesomeIcon icon={faMoon} className="h-6 w-6 px-1"/>)
+                                }
+                            </IconButton>
+                        </Tooltip>
                     </div>
                     <div className="bg-white dark:bg-blue-gray-900 rounded-full gap-2">
                         <ProfileMenu user = {user}/>

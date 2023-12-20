@@ -16,7 +16,7 @@ import Loader from "./components/Loader";
 /** General App layout */
 import Layout from "./components/Layout";
 import { useSelector } from "react-redux";
-import Plant from "./pages/Plant";
+import Plant from "./pages/Plants";
 
 /** Authentication Routes */
 const Login = lazy(() => import("./pages/Login"));
@@ -24,9 +24,9 @@ const Register = lazy(() => import("./pages/Register"));
 
 /** App Routes/Components */
 const Home = lazy(() => import("./pages/Home"));
-
 const Rooms = lazy(() => import("./pages/Rooms/Rooms"));
 const Room = lazy(() => import("./pages/Room/Room"));
+const Plants = lazy(() => import("./pages/Plants"));
 
 function App() {
     const isAuthenticated = Boolean(useSelector(selectCurrentToken));
@@ -92,6 +92,14 @@ function App() {
                                 element={
                                     <React.Suspense fallback={<Loader />}>
                                         <Rooms />
+                                    </React.Suspense>
+                                }
+                            />
+                            <Route
+                                path="/plants"
+                                element={
+                                    <React.Suspense fallback={<Loader />}>
+                                        <Plants />
                                     </React.Suspense>
                                 }
                             />

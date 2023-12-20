@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import { setCredentials, setLogout } from "./userSlice"
 
-const BASE_URL = "http://192.168.1.116:3000/api";
+const BASE_URL = "https://imbedla-backend.onrender.com/api";
 //const BASE_URL = "http://localhost:3000/api";
 
 

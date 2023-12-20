@@ -92,12 +92,12 @@ const RoomCard = ({ room, refreshRooms }) => {
                                 </Button>
                             </MenuHandler>
                             <MenuList className=" w-min z-10">
-                                <MenuItem>
+                                {/* <MenuItem>
                                     <EditRoom
                                         room={room}
                                         refreshRooms={refreshRooms}
                                     />
-                                </MenuItem>
+                                </MenuItem> */}
                                 <MenuItem>
                                     <DeleteRoom
                                         room={room}

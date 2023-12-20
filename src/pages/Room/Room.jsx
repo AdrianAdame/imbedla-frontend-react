@@ -48,18 +48,17 @@ const Room = () => {
     const getLocalPlants = () => {
         getPlants(roomId);
     };
+
     useEffect(() => {
         getLocalPlants();
     }, []);
 
     if (isLoading) {
         return (
-            <div className=" flex flex-col justify-center items-center w-1/2 h-1/2 rounded-2xl ">
-                <h1 className=" text-green-500 font-bold text-3xl">
-                    Loading room information
-                </h1>
-                <Spinner className=" w-10 h-10" color="green" />
-            </div>
+            <div className=" w-full h-full flex flex-col justify-center items-center rounded-xl">
+                <h1 className=" text-green-600 dark:text-green-300 text-3xl">Loading room information...</h1>
+                <Spinner color="green" className=" w-10 h-10" />
+          </div>
         );
     }
 
@@ -92,7 +91,7 @@ const Room = () => {
                 <div className="w-full lg:w-1/4 bg-white dark:bg-blue-gray-900 rounded-lg p-4 flex flex-col justify-between">
                     <Typography
                         variant="h3"
-                        className="font-lexend-exa font-bold text-xl lg:text-2xl mb-10 text-center"
+                        className="font-lexend-exa font-bold text-xl lg:text-2xl mb-2 text-center"
                         color={currentMode === "dark" ? "white" : null}
                     >
                         Room Information
@@ -131,7 +130,7 @@ const Room = () => {
                         </p>
                     </div>
                 </div>
-                <div className="w-full lg:w-3/4 rounded-lg flex flex-col justify-center items-center gap-2">
+                <div className="w-full lg:w-3/4 rounded-lg flex flex-col justify-center items-center gap-1">
 				<Typography
                         variant="h3"
                         className="font-lexend-exa font-bold text-xl lg:text-2xl text-center"
@@ -140,29 +139,35 @@ const Room = () => {
                         Your plants
                     </Typography>
 					<div className="w-full h-full">
-						<Swiper
-							slidesPerView={isTablet ? (isMobile ? 1 : 2) : 3}
-							spaceBetween={50}
-							freeMode={true}
-							pagination={{
-								clickable: true,
-							}}
-							modules={[FreeMode, Pagination]}
-							className="h-full"
-						>
-							{isSuccess &&
-								plants.data.map((plant, i) => (
-									<SwiperSlide
-										key={i}
-										className="flex h-full justify-center items-center"
-									>
-										<PlantCard
-											plant={plant}
-											refreshPlants={getLocalPlants}
-										/>
-									</SwiperSlide>
-								))}
-						</Swiper>
+                        {isLoadingPlants ? (
+                            <div>Loading plants </div>
+                        ) : (
+                            <Swiper
+                                slidesPerView={isTablet ? (isMobile ? 1 : 2) : 3}
+                                spaceBetween={10}
+                                freeMode={true}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                modules={[FreeMode, Pagination]}
+                                className="h-full"
+                            >
+                                {isSuccess && plants.data.length > 0 ? (
+                                    plants.data.map((plant, i) => (
+                                        <SwiperSlide
+                                            key={i}
+                                            className="h-full"
+                                        >
+                                            <PlantCard
+                                                plant={plant}
+                                                refreshPlants={getLocalPlants}
+                                            />
+                                        </SwiperSlide>
+                                    ))) : (
+                                        <div>No plants registered</div>
+                                    )}
+                            </Swiper>
+                        )}
 					</div>
                 </div>
             </div>

@@ -62,8 +62,8 @@ const Rooms = () => {
     } else if (isLoading) {
       return (
         <>
-          <div className=" w-full h-full flex flex-col justify-center items-center bg-white rounded-xl">
-            <h1 className=" text-green-600 text-3xl">Loading ...</h1>
+          <div className=" w-full h-full flex flex-col justify-center items-center rounded-xl">
+            <h1 className=" text-green-600 dark:text-green-300 text-3xl">Loading ...</h1>
             <Spinner color="green" className=" w-10 h-10" />
           </div>
         </>
@@ -94,9 +94,9 @@ const Rooms = () => {
         </div>
         <AddRoom refreshRooms={getLocalRoom} />
       </div>
-      <div className="p-4 text-center lg:text-right w-full">
+      {/* <div className="p-4 text-center lg:text-right w-full">
         Secondary navbar view | Grid or list style
-      </div>
+      </div> */}
       {renderCards()}
     </main>
   );

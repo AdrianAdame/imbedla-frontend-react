@@ -11,6 +11,9 @@ export const plantsApiSlice = apiSlice.injectEndpoints({
         getPlantById: builder.query({
             query: (plantId) => `/plants/rooms/${plantId}`
         }),
+        getFavoritePlants: builder.query({
+            query: (userId) => `/plants/user/${userId}`
+        }),
         createPlant: builder.mutation({
             query: (values) => ({
                 url: '/plants',
@@ -38,6 +41,7 @@ export const plantsApiSlice = apiSlice.injectEndpoints({
 export const {
     useLazyGetPlantByIdQuery,
     useLazyGetPlantsQuery,
+    useGetFavoritePlantsQuery,
     useCreatePlantMutation,
     useDeletePlantMutation,
     useUpdatePlantMutation

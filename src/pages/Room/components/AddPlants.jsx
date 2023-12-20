@@ -57,8 +57,8 @@ const AddRoom = ({ refreshPlants }) => {
       if (result.isConfirmed) {
         try {
           const createdPlant = await createPlantApi(values).unwrap();
-          handleOpen();
           refreshPlants();
+          handleOpen();
         } catch (error) {
           console.log(error);
         }
