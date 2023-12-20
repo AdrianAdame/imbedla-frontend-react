@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-import { Dialog, Input, Option, Select } from "@material-tailwind/react";
+import { Dialog, Input, Option, Select, DialogBody } from "@material-tailwind/react";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";

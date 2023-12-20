@@ -1,8 +1,8 @@
 /** Icons */
 import {
-  faCalendarAlt,
-  faLeaf,
-  faTree,
+    faCalendarAlt,
+    faLeaf,
+    faTree,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -30,132 +30,144 @@ import PlantCard from "./components/PlantCard";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import { useSelector } from "react-redux";
+import { selectCurrentThemeMode } from "../../features/userSlice";
 
 const Room = () => {
-  const { roomId } = useParams();
+    const currentMode = useSelector(selectCurrentThemeMode);
+    const { roomId } = useParams();
 
-  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
-  const isTablet = useMediaQuery({ query: "(max-width: 1100px)" });
+    const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
+    const isTablet = useMediaQuery({ query: "(max-width: 1100px)" });
 
-  const { data: room, isLoading } = useGetRoomByIdQuery(roomId);
+    const { data: room, isLoading } = useGetRoomByIdQuery(roomId);
 
-  const [getPlants, { data: plants, isSuccess, isLoadingPlants }] =
-    useLazyGetPlantsQuery();
+    const [getPlants, { data: plants, isSuccess, isLoadingPlants }] =
+        useLazyGetPlantsQuery();
 
-  const getLocalPlants = () => {
-    getPlants(roomId);
-  };
+    const getLocalPlants = () => {
+        getPlants(roomId);
+    };
+    useEffect(() => {
+        getLocalPlants();
+    }, []);
 
-  console.log(room);
-  useEffect(() => {
-    getLocalPlants();
-  }, []);
+    if (isLoading) {
+        return (
+            <div className=" flex flex-col justify-center items-center w-1/2 h-1/2 rounded-2xl ">
+                <h1 className=" text-green-500 font-bold text-3xl">
+                    Loading room information
+                </h1>
+                <Spinner className=" w-10 h-10" color="green" />
+            </div>
+        );
+    }
 
-  if (isLoading) {
     return (
-      <div className=" flex flex-col justify-center items-center w-full h-full rounded-2xl bg-white">
-        <h1 className=" text-green-500 font-bold text-3xl">
-          Loading room information
-        </h1>
-        <Spinner className=" w-10 h-10" color="green" />
-      </div>
+        <main className="h-full flex flex-col flex-wrap lg:flex-nowrap justify-start ">
+            <div className="flex justify-center lg:justify-between p-2 w-full h-max">
+                <div>
+                    <div className="flex gap-2 justify-center lg:justify-start">
+                        <Typography
+                            variant="h1"
+                            className="font-lexend-exa font-bold text-3xl lg:text-4xl"
+                            color={currentMode === "dark" ? "white" : null}
+                        >
+                            {!isLoading && room.room.name}
+                        </Typography>
+                    </div>
+                    <Typography
+                        variant="paragraph"
+                        className="font-lexend text-sm lg:text-base text-center lg:text-left"
+                        color={currentMode === "dark" ? "white" : null}
+                    >
+                        Create, edit and visualize your plants assigned to this
+                        room
+                    </Typography>
+                </div>
+                <AddPlants refreshPlants={getLocalPlants} />
+            </div>
+
+            <div className="w-full h-full flex flex-col lg:flex-row p-2 gap-8">
+                <div className="w-full lg:w-1/4 bg-white dark:bg-blue-gray-900 rounded-lg p-4 flex flex-col justify-between">
+                    <Typography
+                        variant="h3"
+                        className="font-lexend-exa font-bold text-xl lg:text-2xl mb-10 text-center"
+                        color={currentMode === "dark" ? "white" : null}
+                    >
+                        Room Information
+                    </Typography>
+                    <div className=" flex flex-col justify-center gap-2 items-center">
+                        <h3 className=" flex justify-center  items-center gap-3 text-blue-gray-700 dark:text-white font-lexend">
+                            <FontAwesomeIcon icon={faCalendarAlt} />
+                            Created on:
+                        </h3>
+                        <p className=" text-blue-gray-200 font-lexend font-light">
+                            {new Date(room.room.created_at).toDateString()}
+                        </p>
+                    </div>
+
+                    <div className=" flex flex-col justify-center gap-2 items-center">
+                        <h3 className=" flex justify-center  items-center gap-3 text-blue-gray-700 dark:text-white font-lexend">
+                            <FontAwesomeIcon icon={faTree} />
+                            Number of plants:
+                        </h3>
+                        <p className=" text-blue-gray-200 font-lexend font-light">
+                            {room.room.total_plants === ""
+                                ? "0"
+                                : room.room.total_plants}
+                        </p>
+                    </div>
+
+                    <div className=" flex flex-col justify-center gap-2 items-center">
+                        <h3 className=" flex justify-center  items-center gap-3 text-blue-gray-700 dark:text-white font-lexend">
+                            <FontAwesomeIcon icon={faLeaf} />
+                            Latest plant:
+                        </h3>
+                        <p className=" text-blue-gray-200 font-lexend font-light">
+                            {room.room.latest_plant_name === ""
+                                ? "None"
+                                : room.room.latest_plant_name}
+                        </p>
+                    </div>
+                </div>
+                <div className="w-full lg:w-3/4 rounded-lg flex flex-col justify-center items-center gap-2">
+				<Typography
+                        variant="h3"
+                        className="font-lexend-exa font-bold text-xl lg:text-2xl text-center"
+                        color={currentMode === "dark" ? "white" : null}
+                    >
+                        Your plants
+                    </Typography>
+					<div className="w-full h-full">
+						<Swiper
+							slidesPerView={isTablet ? (isMobile ? 1 : 2) : 3}
+							spaceBetween={50}
+							freeMode={true}
+							pagination={{
+								clickable: true,
+							}}
+							modules={[FreeMode, Pagination]}
+							className="h-full"
+						>
+							{isSuccess &&
+								plants.data.map((plant, i) => (
+									<SwiperSlide
+										key={i}
+										className="flex h-full justify-center items-center"
+									>
+										<PlantCard
+											plant={plant}
+											refreshPlants={getLocalPlants}
+										/>
+									</SwiperSlide>
+								))}
+						</Swiper>
+					</div>
+                </div>
+            </div>
+        </main>
     );
-  }
-
-  return (
-    <main className="h-full flex flex-wrap w-full ">
-      <div className="flex justify-center lg:justify-between p-2 w-full h-max">
-        <div>
-          <div className="flex gap-2 justify-center lg:justify-start">
-            <Typography
-              variant="h1"
-              className="font-lexend-exa font-bold text-3xl lg:text-4xl"
-            >
-              {!isLoading && room.room.name}
-            </Typography>
-          </div>
-          <Typography
-            variant="paragraph"
-            className="font-lexend text-sm lg:text-base text-center lg:text-left"
-          >
-            Create, edit and visualize your plants assigned to this room
-          </Typography>
-        </div>
-        <AddPlants refreshPlants={getLocalPlants} />
-      </div>
-
-      <div
-        className=" w-full h-5/6 sm:h-[70vh] rounded-2xl border-l-8 bg-white"
-        style={{ borderColor: room.room.color }}
-      >
-        <div className=" flex flex-col text-lg w-full pt-5 justify-around h-full items-center">
-          <div className="flex lg:flex-row sm:flex-col justify-around w-full h-1/6 sm:h-60">
-            <div className=" flex flex-col justify-center items-center">
-              <h3 className=" flex justify-center  items-center gap-3 text-blue-gray-700">
-                <FontAwesomeIcon icon={faCalendarAlt} />
-                Created on:
-              </h3>
-              <p className=" text-blue-gray-200 font-light">
-                {new Date(room.room.created_at).toDateString()}
-              </p>
-            </div>
-
-            <div className=" flex flex-col justify-center items-center">
-              <h3 className=" flex justify-center items-center gap-3 text-blue-gray-700">
-                <FontAwesomeIcon icon={faTree} />
-                Number of plants:
-              </h3>
-              <p className=" text-blue-gray-200 font-light">
-                {room.room.total_plants === "" ? "0" : room.room.total_plants}
-              </p>
-            </div>
-
-            <div className=" flex flex-col justify-center items-center">
-              <h3 className=" flex justify-center items-center gap-3 text-blue-gray-700">
-                <FontAwesomeIcon icon={faLeaf} />
-                Latest plant:
-              </h3>
-              <p className=" text-blue-gray-200 font-light">
-                {room.room.latest_plant_name === ""
-                  ? "None"
-                  : room.room.latest_plant_name}
-              </p>
-            </div>
-          </div>
-          {!isSuccess && (
-            <>
-              <div className=" w-full h-full flex justify-center items-center">
-                <Spinner color="green" className=" w-10 h-10" />
-              </div>
-            </>
-          )}
-
-          <div className=" w-full h-full ">
-            <Swiper
-              slidesPerView={isTablet ? (isMobile ? 1 : 2) : 3}
-              spaceBetween={30}
-              freeMode={true}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[FreeMode, Pagination]}
-              className=" h-5/6 "
-            >
-              {isSuccess &&
-                plants.data.map((plant, i) => (
-                  <SwiperSlide
-                    key={i}
-                    className="flex h-full justify-center items-center"
-                  >
-                    <PlantCard plant={plant} refreshPlants={getLocalPlants} />
-                  </SwiperSlide>
-                ))}
-            </Swiper>
-          </div>
-        </div>
-      </div>
-    </main>
-  );
 };
 
 export default Room;

@@ -14,10 +14,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSunPlantWilt } from "@fortawesome/free-solid-svg-icons";
 
 /** Endpoints */
-import { selecteCurrentUserId } from "../../features/userSlice";
+import { selectCurrentThemeMode, selecteCurrentUserId } from "../../features/userSlice";
 import { useLazyGetRoomsQuery } from "../../features/slices/roomsEndpoints";
 
 const Rooms = () => {
+  const currentMode = useSelector(selectCurrentThemeMode)
+
   const userId = useSelector(selecteCurrentUserId);
 
   const [getRooms, { data: rooms, isSuccess, isLoading }] =
@@ -77,6 +79,7 @@ const Rooms = () => {
             <Typography
               variant="h1"
               className="font-lexend-exa font-bold text-3xl lg:text-4xl"
+              color={currentMode === "dark" ? "white" : null}
             >
               MY ROOMS
             </Typography>
@@ -84,6 +87,7 @@ const Rooms = () => {
           <Typography
             variant="paragraph"
             className="font-lexend text-sm lg:text-base text-center lg:text-left"
+            color={currentMode === "dark" ? "white" : null}
           >
             Create, Edit and Update your rooms
           </Typography>

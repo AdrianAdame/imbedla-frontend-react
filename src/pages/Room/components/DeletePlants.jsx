@@ -30,7 +30,7 @@ const DeletePlants = ({ plants, refreshPlants }) => {
 
         Swal.fire({
           title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "Your plant has been deleted.",
           icon: "success",
         }).then((close) => {
           if (close) {

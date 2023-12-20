@@ -16,4 +16,4 @@ const EditPlant = () => {
   )
 }
 
-export default EditPlantfe
+export default EditPlant

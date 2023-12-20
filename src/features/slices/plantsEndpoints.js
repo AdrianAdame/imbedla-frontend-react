@@ -27,7 +27,7 @@ export const plantsApiSlice = apiSlice.injectEndpoints({
         }),
         updatePlant: builder.mutation({
             query: (values) => ({
-                url: '/rooms',
+                url: '/plants',
                 method: 'PATCH',
                 body: { ...values },
             })
@@ -39,5 +39,6 @@ export const {
     useLazyGetPlantByIdQuery,
     useLazyGetPlantsQuery,
     useCreatePlantMutation,
-    useDeletePlantMutation
+    useDeletePlantMutation,
+    useUpdatePlantMutation
 } = plantsApiSlice

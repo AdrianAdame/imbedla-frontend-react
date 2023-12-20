@@ -26,7 +26,7 @@ const DeleteRoom = ({ room, refreshRooms }) => {
 
         Swal.fire({
           title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "Your room has been deleted.",
           icon: "success",
         }).then((close) => {
           if (close) {
