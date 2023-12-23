@@ -28,7 +28,7 @@ URL Deployed
 Current functionality
 
 - Frontend 
-    - Flow for user authentificatin (login, logout and register).
+    - Flow for user authentification (login, logout and register).
     - CRUD support for plants (update in progress).
     - CRUD support for rooms (update in progress).
     - External API consultation for additional plants information.
